@@ -1,0 +1,7 @@
+modalidad_publicacion,perfil_escala,cantidad_estudios,total_titulos,precio_medio_pagos_usd,metascore_medio_pct,propietarios_medios_miles,pct_supera_500k_prop
+Autopublicado,Estudio Monotítulo (1 título),719,719,11.63,82.2,826.4,20.6
+Autopublicado,Estudio Consolidado (3+ títulos),43,195,19.66,84.9,3171.0,57.9
+Autopublicado,Estudio Mediano (2 títulos),55,103,17.54,84.2,873.8,51.5
+Editor Externo,Estudio Monotítulo (1 título),397,397,17.36,82.1,1879.7,35.5
+Editor Externo,Estudio Consolidado (3+ títulos),39,137,27.4,83.3,1407.2,62.0
+Editor Externo,Estudio Mediano (2 títulos),47,87,21.05,84.0,886.1,49.4

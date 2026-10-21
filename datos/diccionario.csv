@@ -1,0 +1,28 @@
+nivel,entidad_o_tabla,variable,tipo_dato,unidad,origen,significado_y_rol
+Original (CSV),steamspy_catalogo_bruto.csv,lote_id,TEXT / INTEGER,Identificador,Metadato de extracción (vincula con JSON),Identificador del lote de extracción (1 a 6) que vincula cada fila con su URL y fecha de captura.
+Original (CSV),steamspy_catalogo_bruto.csv,listado_origen,TEXT,Categoría,SteamSpy Web / API,"Nombre del listado o género de origen en SteamSpy (Indie, Action, Adventure, Sports, 2025, Massively)."
+Original (CSV),steamspy_catalogo_bruto.csv,ranking_origen,INTEGER,Posición ordinal (1..500),SteamSpy Web,Posición del videojuego dentro de la tabla original del listado o género al momento de la extracción.
+Original (CSV),steamspy_catalogo_bruto.csv,game_title_raw,TEXT,Texto nominal,Steam / SteamSpy,Nombre comercial del videojuego en el catálogo de Steam.
+Original (CSV),steamspy_catalogo_bruto.csv,release_date_raw,TEXT,"Fecha en texto (MMM D, YYYY)",Steam / SteamSpy,"Fecha de lanzamiento sin procesar; incluye cadenas 'Coming soon' y fechas anómalas ('Dec 31, 1969')."
+Original (CSV),steamspy_catalogo_bruto.csv,price_raw,TEXT,USD / Texto,Steam Store / SteamSpy,"Precio de lista bruto; combina montos en dólares ('$19.99'), juegos gratuitos ('Free') y ausentes ('N/A')."
+Original (CSV),steamspy_catalogo_bruto.csv,score_rank_raw,TEXT,Porcentaje compuesto,Steam / Metacritic vía SteamSpy,Campo anidado con Userscore y Metascore entre paréntesis (ej. '97% (96%)' o 'N/A (N/A)').
+Original (CSV),steamspy_catalogo_bruto.csv,owners_raw,TEXT,Rango de cuentas,Estimación estadística SteamSpy,"Intervalo estimado de propietarios en Steam separado por '..' (ej. '1,000,000 .. 2,000,000')."
+Original (CSV),steamspy_catalogo_bruto.csv,playtime_raw,TEXT,HH:MM (mediana),SteamSpy,Tiempo de juego histórico y en las últimas 2 semanas (cuando está disponible en la vista).
+Original (CSV),steamspy_catalogo_bruto.csv,developer_raw,TEXT,Texto nominal,Steam / SteamSpy,Estudio(s) desarrollador(es) declarados en la ficha técnica del título.
+Original (CSV),steamspy_catalogo_bruto.csv,publisher_raw,TEXT,Texto nominal,Steam / SteamSpy,Empresa editora (publisher) o 'N/A' cuando no figura editor externo separado.
+Relacional (SQLite),lotes_extraccion,lote_id,INTEGER (PK),Clave primaria,Configuración y metadatos JSON,Identificador único de cada lote de captura desde SteamSpy (1 a 6).
+Relacional (SQLite),lotes_extraccion,url_origen,TEXT NOT NULL,URL HTTPS,Metadatos de procedencia,Enlace verificable de origen de cada extracción en SteamSpy.
+Relacional (SQLite),generos,genero_id,INTEGER (PK),Clave primaria,Catálogo propio en R,Identificador único del género o listado analítico en el modelo relacional.
+Relacional (SQLite),generos,grupo_analitico,TEXT NOT NULL,Categoría,Catálogo propio en R,Clasificación analítica en español del género o cohorte para reportes y consultas.
+Relacional (SQLite),estudios,estudio_id,INTEGER (PK),Clave primaria,Regla R5 (normalización),"Identificador único de cada estudio desarrollador normalizado (1,280 estudios)."
+Relacional (SQLite),estudios,perfil_escala,TEXT NOT NULL,Escala ordinal,Derivada en R (Regla R5),"Clasifica al estudio según su presencia en la muestra: Monotítulo (1), Mediano (2) o Consolidado (3+)."
+Relacional (SQLite),juegos,juego_id,INTEGER (PK),Clave primaria,Regla R6 (deduplicación),"Identificador único de cada videojuego deduplicado en la base analítica (1,638 juegos)."
+Relacional (SQLite),juegos,anio_lanzamiento,INTEGER,Año calendario (1998-2025),Regla R1 (fechas),Variable de estudio temporal: año de publicación verificado en Steam (CHECK BETWEEN 1998 AND 2025).
+Relacional (SQLite),juegos,precio_usd,REAL,Dólares estadounidenses (USD),Regla R2 (precios),"Variable de estudio cuantitativa continua: precio nominal vigente en USD (0.00 en gratuitos, NULL si N/A)."
+Relacional (SQLite),juegos,estado_precio,TEXT,Categoría tarifaria,Regla R2 (precios),"Distingue 'Pago', 'Gratuito' ($0.00 válido) y 'Sin precio vigente' (NULL), evitando sesgar promedios."
+Relacional (SQLite),juegos,modalidad_publicacion,TEXT,Categoría editorial,Regla R5 (estudios/editores),Variable de estudio categórica: 'Autopublicado' (dev == pub) vs 'Editor Externo' (dev != pub).
+Relacional (SQLite),metricas_steamspy,metascore_pct,INTEGER,Puntos porcentuales (0-100%),Regla R4 (desanidado),Variable de estudio cuantitativa: puntaje de recepción crítica en Metacritic (NULL si no posee cobertura).
+Relacional (SQLite),metricas_steamspy,propietarios_min,INTEGER,Cuentas de usuarios,Regla R3 (rango propietarios),Cota inferior del intervalo de propietarios estimados por SteamSpy.
+Relacional (SQLite),metricas_steamspy,propietarios_max,INTEGER,Cuentas de usuarios,Regla R3 (rango propietarios),Cota superior del intervalo de propietarios estimados por SteamSpy.
+Relacional (SQLite),metricas_steamspy,propietarios_med,REAL,Cuentas de usuarios (marca de clase),Regla R3 (rango propietarios),Variable de estudio cuantitativa de alcance comercial: punto medio del intervalo de propietarios.
+Relacional (SQLite),juego_genero,"juego_id, genero_id",INTEGER (PK compuesta / FK),Clave compuesta,Regla R6 y R7,"Tabla puente N:M que preserva las 2,313 asignaciones de juegos a géneros y su ranking sin duplicar la entidad juego."

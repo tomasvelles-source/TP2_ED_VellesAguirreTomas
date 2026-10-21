@@ -1,0 +1,56 @@
+[
+  {
+    "lote_id": "LOTE_INDIE",
+    "nombre_lote": "Catálogo SteamSpy - Género Indie",
+    "fuente_responsable": "SteamSpy (Sergey Galyonkin) / Valve Steam Web API",
+    "url_origen": "https://steamspy.com/genre/Indie",
+    "fecha_extraccion": "2026-10-21",
+    "licencia": "Atribución abierta (CC BY 4.0 / Fair Use SteamSpy)",
+    "registros_brutos": 500
+  },
+  {
+    "lote_id": "LOTE_ACTION",
+    "nombre_lote": "Catálogo SteamSpy - Género Action",
+    "fuente_responsable": "SteamSpy (Sergey Galyonkin) / Valve Steam Web API",
+    "url_origen": "https://steamspy.com/genre/Action",
+    "fecha_extraccion": "2026-10-21",
+    "licencia": "Atribución abierta (CC BY 4.0 / Fair Use SteamSpy)",
+    "registros_brutos": 500
+  },
+  {
+    "lote_id": "LOTE_ADVENTURE",
+    "nombre_lote": "Catálogo SteamSpy - Género Adventure",
+    "fuente_responsable": "SteamSpy (Sergey Galyonkin) / Valve Steam Web API",
+    "url_origen": "https://steamspy.com/genre/Adventure",
+    "fecha_extraccion": "2026-10-21",
+    "licencia": "Atribución abierta (CC BY 4.0 / Fair Use SteamSpy)",
+    "registros_brutos": 500
+  },
+  {
+    "lote_id": "LOTE_SPORTS",
+    "nombre_lote": "Catálogo SteamSpy - Género Sports",
+    "fuente_responsable": "SteamSpy (Sergey Galyonkin) / Valve Steam Web API",
+    "url_origen": "https://steamspy.com/genre/Sports",
+    "fecha_extraccion": "2026-10-21",
+    "licencia": "Atribución abierta (CC BY 4.0 / Fair Use SteamSpy)",
+    "registros_brutos": 450
+  },
+  {
+    "lote_id": "LOTE_COHORTE2025",
+    "nombre_lote": "Catálogo SteamSpy - Cohorte Anual 2025",
+    "fuente_responsable": "SteamSpy (Sergey Galyonkin) / Valve Steam Web API",
+    "url_origen": "https://steamspy.com/year/2025",
+    "fecha_extraccion": "2026-10-21",
+    "licencia": "Atribución abierta (CC BY 4.0 / Fair Use SteamSpy)",
+    "registros_brutos": 450
+  },
+  {
+    "lote_id": "LOTE_MMO",
+    "nombre_lote": "Catálogo SteamSpy - Género Massively Multiplayer",
+    "fuente_responsable": "SteamSpy (Sergey Galyonkin) / Valve Steam Web API",
+    "url_origen": "https://steamspy.com/genre/Massively",
+    "fecha_extraccion": "2026-10-21",
+    "licencia": "Atribución abierta (CC BY 4.0 / Fair Use SteamSpy)",
+    "registros_brutos": 10
+  }
+]
