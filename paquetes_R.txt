@@ -1,0 +1,24 @@
+# ==============================================================================
+# Entorno y Dependencias de R - Trabajo Práctico 2 (Exploración de Datos - UCA)
+# Autor: Tomás Velles Aguirre
+# Entorno objetivo: R (>= 4.3.0) en Google Colab (kernel R) o VS Code local
+# ==============================================================================
+
+R.version.string: R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Plataforma: x86_64-pc-linux-gnu (64-bit) / Google Colab R Runtime
+
+Paquetes requeridos (instalables vía install.packages()):
+- DBI (v1.2.3)        -> Interfaz estándar de conexión y transacciones con motores SQL
+- RSQLite (v2.3.7)    -> Motor embebido SQLite 3 con soporte para PRAGMA foreign_keys
+- dplyr (v1.1.4)      -> Manipulación y agregación declarativa de dataframes
+- tidyr (v1.3.1)      -> Reestructuración y normalización de tablas
+- readr (v2.1.5)      -> Importación rápida y reproducible de archivos CSV y texto
+- stringr (v1.5.1)    -> Procesamiento de expresiones regulares (precios, rangos, scores)
+- jsonlite (v1.8.8)   -> Lectura de metadatos de procedencia en formato JSON
+- ggplot2 (v3.5.1)    -> Construcción de los tres gráficos principales de resultados
+- scales (v1.3.0)     -> Formateo de escalas monetarias (USD) y porcentuales (%)
+
+Comando de instalación automática incluido al inicio del notebook:
+paquetes <- c("DBI", "RSQLite", "dplyr", "tidyr", "readr", "stringr", "jsonlite", "ggplot2", "scales")
+nuevos <- paquetes[!(paquetes %in% installed.packages()[, "Package"])]
+if (length(nuevos) > 0) install.packages(nuevos, repos = "https://cloud.r-project.org")
